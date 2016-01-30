@@ -3,6 +3,7 @@ package org.usfirst.frc.team4373.robot.subsystems;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.RobotMap;
+import org.usfirst.frc.team4373.robot.commands.DriveWithJoystick;
 
 /**
  * Created by tesla on 1/15/16.
@@ -20,7 +21,7 @@ public class DriveTrain extends PIDSubsystem {
 
     public void setLeft(double power) {
         this.left1.set(power);
-        this.left2.set(power);
+        this.left2.set(-power);
     }
 
     public void setRight(double power) {
@@ -45,6 +46,6 @@ public class DriveTrain extends PIDSubsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new DriveWithJoystick());
     }
 }

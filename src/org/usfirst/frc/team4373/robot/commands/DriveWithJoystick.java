@@ -20,8 +20,8 @@ public class DriveWithJoystick extends CommandBase {
 
     @Override
     protected void execute() {
-        this.driveTrain.setRight(-this.joystick.getTwist() + this.joystick.getMagnitude());
-        this.driveTrain.setRight(this.joystick.getTwist() + this.joystick.getMagnitude());
+        this.driveTrain.setRight(this.joystick.getTwist() + this.joystick.getY());
+        this.driveTrain.setLeft(-this.joystick.getTwist() + this.joystick.getY());
     }
 
     @Override

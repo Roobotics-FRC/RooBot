@@ -2,7 +2,6 @@ package org.usfirst.frc.team4373.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4373.robot.OI;
-import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
 
 /**
  * Created by tesla on 1/15/16.
@@ -11,10 +10,14 @@ import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
 public abstract class CommandBase extends Command {
     protected OI oi;
 
+    public CommandBase() {
+        super();
+        this.oi = OI.getOI();
+    }
 
     @Override
     public void initialize() {
-        this.oi = OI.getOI();
+
     }
 
 }

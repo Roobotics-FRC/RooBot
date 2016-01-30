@@ -8,9 +8,12 @@ import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
  */
 public class OI {
     private static OI oi = null;
+
     private RooJoystick joystick;
+//    private ADXRS450_Gyro gyro;
 
     public OI() {
+//        gyro = new ADXRS450_Gyro();
         joystick = new RooJoystick(RobotMap.JOYSTICK_PORT);
     }
 
@@ -28,4 +31,8 @@ public class OI {
     public void tick() {
         RooDashboard.tick();
     }
+
+//    public double getAngle() {
+//        return this.gyro.getAngle();
+//    }
 }

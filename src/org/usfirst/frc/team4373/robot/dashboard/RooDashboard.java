@@ -23,5 +23,6 @@ public class RooDashboard extends SmartDashboard {
     public static void tick() {
         putNumber("Joystick twist", OI.getOI().getJoystick().getTwist());
         putNumber("Joystick magnitude", OI.getOI().getJoystick().getMagnitude());
+//        putNumber("Gyro angle", OI.getOI().getAngle());
     }
 }
