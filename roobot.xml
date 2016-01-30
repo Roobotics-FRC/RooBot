@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="roobot" default="deploy">
+
+  <!--
+  The following properties can be defined to override system level
+  settings. These should not be touched unless you know what you're
+  doing. The primary use is to override the wpilib version when
+  working with older robots that can't compile with the latest
+  libraries.
+  -->
+
+  <!-- By default the system version of WPI is used -->
+  <!-- <property name="version" value=""/> -->
+
+  <!-- By default the system team number is used -->
+  <!-- <property name="team-number" value=""/> -->
+
+  <!-- By default the target is set to 10.TE.AM.2 -->
+  <!-- <property name="target" value=""/> -->
+
+  <!-- Any other property in build.properties can also be overridden. -->
+  <!-- Load Tasks -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <pathelement location="ant/ant-contrib.jar"/>
+    </classpath>
+  </taskdef>
+  <taskdef resource="net/jtools/classloadertask/antlib.xml" classpath="ant/ant-classloadertask.jar"/>
+  <classloader loader="system" classpath="ant/jsch-0.1.50.jar"/>
+
+  <property file="ant/wpilib.properties"/>
+  <property file="roobot.properties"/>
+  <property file="ant/build.properties"/>
+
+  <import file="ant/build.xml"/>
+</project>
