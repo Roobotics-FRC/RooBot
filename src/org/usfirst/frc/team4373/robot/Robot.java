@@ -14,7 +14,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void robotInit() {
-        SmartDashboard.putString("egrjoi", "fewioj");
+        SmartDashboard.putString("egrjoi", "xxxx");
     }
 
     @Override
