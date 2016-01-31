@@ -40,7 +40,7 @@ public class RooJoystick extends Joystick {
         if (Math.abs(this.getTwist()) <= DEADZONE) {
             return 0.0D;
         }
-        return this.filter(this.getTwist() - DEADZONE, filter);
+        return this.filter(this.getTwist(), filter);
     }
 
     protected double rooGetThrottle(Filter filter) {
