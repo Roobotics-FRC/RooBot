@@ -5,11 +5,16 @@
       <root url="jar://$PROJECT_DIR$/ant/ant-classloadertask.jar!/" />
       <root url="jar://$PROJECT_DIR$/ant/ant-contrib.jar!/" />
       <root url="jar://$PROJECT_DIR$/ant/jsch-0.1.50.jar!/" />
+      <root url="file://$PROJECT_DIR$/vision" />
     </CLASSES>
     <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/vision" />
+    </NATIVE>
     <SOURCES>
       <root url="file://$PROJECT_DIR$/wpilib/lib" />
     </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/vision" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/wpilib/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/wpilib/lib" recursive="false" type="SOURCES" />
   </library>
