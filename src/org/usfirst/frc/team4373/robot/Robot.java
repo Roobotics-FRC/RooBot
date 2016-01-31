@@ -2,19 +2,30 @@ package org.usfirst.frc.team4373.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4373.robot.commands.AutonCollisionAvoid;
 import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
 
 /**
  * Created by tesla on 1/15/16.
  */
 public class Robot extends IterativeRobot {
-    public static DriveTrain driveTrain = new DriveTrain(1, 1, 1);
+    public static DriveTrain driveTrain = new DriveTrain(1, 1, 0);
+    private AutonCollisionAvoid autonCommand = new AutonCollisionAvoid();
 
+    @Override
+    public void autonomousInit() {
+        autonCommand.start();
+    }
 
     @Override
     public void robotInit() {
-        SmartDashboard.putString("egrjoi", "xxxx");
+    }
+
+    @Override
+    public void teleopInit() {
+        if (autonCommand != null) {
+            autonCommand.cancel();
+        }
     }
 
     @Override
@@ -25,6 +36,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousPeriodic() {
+        Scheduler.getInstance().run();
         OI.getOI().tick();
     }
 }
