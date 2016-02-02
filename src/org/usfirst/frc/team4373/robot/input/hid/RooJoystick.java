@@ -37,6 +37,11 @@ public class RooJoystick extends Joystick {
     }
 
     protected double rooGetTwist(Filter filter) {
+        double deadZone = DEADZONE;
+        double twist = this.getTwist();
+        if (twist < 0) {
+            deadZone *= 3;
+        }
         if (Math.abs(this.getTwist()) <= DEADZONE) {
             return 0.0D;
         }

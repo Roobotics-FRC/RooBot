@@ -3,7 +3,7 @@ package org.usfirst.frc.team4373.robot;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
-import org.usfirst.frc.team4373.robot.input.filter.PiecewiseLinearFilter;
+import org.usfirst.frc.team4373.robot.input.filter.CubeFilter;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
 
 /**
@@ -18,7 +18,7 @@ public class OI {
 
     public OI() {
         gyro = new ADXRS450_Gyro();
-        joystick = new RooJoystick(RobotMap.JOYSTICK_PORT, new PiecewiseLinearFilter());
+        joystick = new RooJoystick(RobotMap.JOYSTICK_PORT, new CubeFilter());
         ultrasonic = new AnalogInput(0);
     }
 
@@ -50,6 +50,6 @@ public class OI {
     }
 
     public double getDistance() {
-        return this.ultrasonic.getValue();
+        return this.ultrasonic.getAverageValue();
     }
 }
