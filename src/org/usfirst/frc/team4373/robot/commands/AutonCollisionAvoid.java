@@ -7,7 +7,7 @@ import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
  * Created by tesla on 1/30/16.
  */
 public class AutonCollisionAvoid extends CommandBase {
-    private static final double SPEED = 0.35D;
+    private static final double SPEED = -0.6D;
     private int turnTicks = 0;
     private DriveTrain driveTrain;
 
@@ -17,15 +17,15 @@ public class AutonCollisionAvoid extends CommandBase {
 
     @Override
     protected void execute() {
-        if (oi.getDistance() < 260) {
-            driveTrain.setBoth(-SPEED / 2);
+        if (oi.getDistance() < 250) {
+            driveTrain.setBoth(SPEED / 2);
             turnTicks = 60;
         } else if (turnTicks > 0) {
             --turnTicks;
             driveTrain.setRight(-SPEED / 2);
             driveTrain.setLeft(SPEED / 2);
         } else {
-            driveTrain.setBoth(SPEED);
+            driveTrain.setBoth(-SPEED);
         }
     }
 
