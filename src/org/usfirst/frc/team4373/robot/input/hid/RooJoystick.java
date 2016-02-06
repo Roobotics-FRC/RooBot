@@ -8,7 +8,7 @@ import org.usfirst.frc.team4373.robot.input.filter.Filter;
  * Created by tesla on 11/1/15.
  */
 public class RooJoystick extends Joystick {
-    private static final double DEADZONE = 0.1D;
+    private static final double DEADZONE = 0.07D;
     private Filter filter = null;
 
     public RooJoystick(int port, Filter... filter) {

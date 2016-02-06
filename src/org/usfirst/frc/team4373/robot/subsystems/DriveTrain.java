@@ -26,7 +26,7 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public void setLeft(double power) {
-        this.left1.set(power);
+        this.left1.set(-power);
         this.left2.set(-power);
     }
 
