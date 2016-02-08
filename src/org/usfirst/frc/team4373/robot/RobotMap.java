@@ -12,4 +12,7 @@ public class RobotMap {
     public static final int JOYSTICK_PORT = 0;
 
     public static final int INTAKE_PORT = 5;
+
+    public static final int INTAKE_BUTTON_FORWARD = 5;
+    public static final int INTAKE_BUTTON_BACKWARD = 3;
 }
