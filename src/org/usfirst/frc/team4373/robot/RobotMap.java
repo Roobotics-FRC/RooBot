@@ -10,4 +10,6 @@ public class RobotMap {
     public static final int RIGHT_DRIVE_MOTOR_2 = 3;
 
     public static final int JOYSTICK_PORT = 0;
+
+    public static final int INTAKE_PORT = 5;
 }
