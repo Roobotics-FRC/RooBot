@@ -3,31 +3,29 @@ package org.usfirst.frc.team4373.robot.commands;
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
-import org.usfirst.frc.team4373.robot.subsystems.Intake;
+import org.usfirst.frc.team4373.robot.subsystems.Shooter;
 
 /**
  * Created by tesla on 2/8/16.
  */
-public class IntakeCommand extends CommandBase {
+public class ShooterCommand extends CommandBase {
 
-    private Intake intake;
+    private Shooter shooter;
     private RooJoystick joystick;
 
-    public IntakeCommand() {
+    public ShooterCommand() {
         super();
-        this.joystick = oi.getJoystick();
-        this.intake = Robot.intake;
+        joystick = this.oi.getJoystick();
+        shooter = Robot.shooter;
         requires(Robot.driveTrain);
     }
 
     @Override
     protected void execute() {
-        if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_FORWARD)) {
-            intake.turnForward();
-        } else if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD)) {
-            intake.turnBackward();
+        if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_FORWARD)) {
+            shooter.shoot();
         } else {
-            intake.stop();
+            shooter.stop();
         }
     }
 

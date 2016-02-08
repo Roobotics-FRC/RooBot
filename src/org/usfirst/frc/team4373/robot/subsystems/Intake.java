@@ -12,8 +12,8 @@ public class Intake extends PIDSubsystem {
     private final static double INTAKE_POWER = 1;
     private CANTalon motor;
 
-    public Intake(String name, double p, double i, double d) {
-        super(name, p, i, d);
+    public Intake(double p, double i, double d) {
+        super("Intake", p, i, d);
         this.motor = new CANTalon(RobotMap.INTAKE_PORT);
     }
 

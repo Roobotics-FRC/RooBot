@@ -3,6 +3,7 @@ package org.usfirst.frc.team4373.robot.subsystems;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.RobotMap;
+import org.usfirst.frc.team4373.robot.commands.ShooterCommand;
 
 /**
  * Created by tesla on 2/8/16.
@@ -43,6 +44,6 @@ public class Shooter extends PIDSubsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new ShooterCommand());
     }
 }
