@@ -15,24 +15,38 @@ public class Accelerometer extends BuiltInAccelerometer {
     private List<Point> yDataTable;
     private RiemannIntegrator xIntegrator;
     private RiemannIntegrator yIntegrator;
+    private RiemannIntegrator xVelocityIntegrator;
+    private RiemannIntegrator yVelocityIntegrator;
 
     public Accelerometer() {
         super();
         xIntegrator = new RiemannIntegrator(RiemannIntegrator.RiemannMethod.TRAPEZOIDAL);
         yIntegrator = new RiemannIntegrator(RiemannIntegrator.RiemannMethod.TRAPEZOIDAL);
+        xVelocityIntegrator = new RiemannIntegrator(RiemannIntegrator.RiemannMethod.TRAPEZOIDAL);
+        yVelocityIntegrator = new RiemannIntegrator(RiemannIntegrator.RiemannMethod.TRAPEZOIDAL);
     }
 
     public void tick() {
         xIntegrator.addPoint(ticks, getX());
         yIntegrator.addPoint(ticks, getY());
+        xVelocityIntegrator.addPoint(ticks, getCurrentXVelocity());
+        yVelocityIntegrator.addPoint(ticks, getCurrentYVelocity());
         ++ticks;
     }
 
-    public double getAverageXVelocity() {
+    public double getCurrentXVelocity() {
         return xIntegrator.integrate();
     }
 
-    public double getAverageYVelocity() {
+    public double getCurrentYVelocity() {
         return yIntegrator.integrate();
+    }
+
+    public double getCurrentXPosition() {
+        return xVelocityIntegrator.integrate();
+    }
+
+    public double getCurrentYPosition() {
+        return yVelocityIntegrator.integrate();
     }
 }
