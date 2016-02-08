@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 import org.usfirst.frc.team4373.robot.input.filter.CubeFilter;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
+import org.usfirst.frc.team4373.robot.input.sensor.Accelerometer;
 
 /**
  * Created by tesla on 1/15/16.
@@ -15,11 +16,13 @@ public class OI {
     private RooJoystick joystick;
     private ADXRS450_Gyro gyro;
     private AnalogInput ultrasonic;
+    private Accelerometer accelerometer;
 
     public OI() {
         gyro = new ADXRS450_Gyro();
         joystick = new RooJoystick(RobotMap.JOYSTICK_PORT, new CubeFilter());
         ultrasonic = new AnalogInput(0);
+        accelerometer = new Accelerometer();
     }
 
     public static OI getOI() {
@@ -27,6 +30,10 @@ public class OI {
             oi = new OI();
         }
         return oi;
+    }
+
+    public Accelerometer getAccelerometer() {
+        return accelerometer;
     }
 
     public RooJoystick getJoystick() {
@@ -52,4 +59,5 @@ public class OI {
     public double getDistance() {
         return this.ultrasonic.getAverageValue();
     }
+
 }
