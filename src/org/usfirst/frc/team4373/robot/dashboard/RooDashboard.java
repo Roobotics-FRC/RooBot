@@ -25,5 +25,11 @@ public class RooDashboard extends SmartDashboard {
         putNumber("Joystick magnitude", OI.getOI().getJoystick().getMagnitude());
         putNumber("Gyro angle", OI.getOI().getAngle());
         putNumber("Ultrasonic", OI.getOI().getDistance());
+        putNumber("Acceleration X", OI.getOI().getAccelerometer().getX());
+        putNumber("Acceleration Y", OI.getOI().getAccelerometer().getY());
+        putNumber("Velocity X", OI.getOI().getAccelerometer().getCurrentXVelocity());
+        putNumber("Velocity Y", OI.getOI().getAccelerometer().getCurrentYVelocity());
+        putNumber("Position X", OI.getOI().getAccelerometer().getCurrentXPosition());
+        putNumber("Position Y", OI.getOI().getAccelerometer().getCurrentYPosition());
     }
 }
