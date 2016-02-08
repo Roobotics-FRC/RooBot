@@ -15,4 +15,7 @@ public class RobotMap {
 
     public static final int INTAKE_BUTTON_FORWARD = 5;
     public static final int INTAKE_BUTTON_BACKWARD = 3;
+
+    public static final int SHOOTER_1 = 6;
+    public static final int SHOOTER_2 = 7;
 }
