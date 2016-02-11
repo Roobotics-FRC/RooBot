@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 package org.usfirst.frc.team4373.input.filter;
 
 import org.usfirst.frc.team4373.robot.input.filter.Filter;
+=======
+package org.usfirst.frc.team4373.robot.input.filter;
+>>>>>>> 5f3c8049708974c32f73fe93e1dfadeadd90774b
 
 /**
  * Created by tesla on 11/1/15.
@@ -23,8 +27,13 @@ public class PiecewiseLinearFilter implements Filter {
 
     @Override
     public Object applyFilter(Object input) {
+<<<<<<< HEAD
         double val = (Double)input;
         int sign = (int)(val/Math.abs(val));
+=======
+        double val = (Double) input;
+        int sign = (int) (val / Math.abs(val));
+>>>>>>> 5f3c8049708974c32f73fe93e1dfadeadd90774b
         double joystickInput = Math.abs(val);
         double throttle = 0.0;
         // If within domain of piece 1
