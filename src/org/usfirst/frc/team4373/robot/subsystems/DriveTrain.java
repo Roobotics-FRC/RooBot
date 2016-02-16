@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.OI;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 
 /**
  * Created by tesla on 1/15/16.

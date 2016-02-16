@@ -19,6 +19,11 @@ public class DriveWithJoystick extends CommandBase {
     }
 
     @Override
+    protected void initialize() {
+
+    }
+
+    @Override
     protected void execute() {
         double right = (this.joystick.getAxis(3) / 2) + this.joystick.getAxis(1);
         double left = (-this.joystick.getAxis(3) / 2) + this.joystick.getAxis(1);

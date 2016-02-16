@@ -20,6 +20,11 @@ public class IntakeCommand extends CommandBase {
     }
 
     @Override
+    protected void initialize() {
+
+    }
+
+    @Override
     protected void execute() {
         if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_FORWARD)) {
             intake.turnForward();
