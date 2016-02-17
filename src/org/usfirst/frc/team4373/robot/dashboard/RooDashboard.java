@@ -2,6 +2,7 @@ package org.usfirst.frc.team4373.robot.dashboard;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.OI;
+import org.usfirst.frc.team4373.robot.input.sensor.SonicRangeFinder;
 
 /**
  * Created by tesla on 1/15/16.

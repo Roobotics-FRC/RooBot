@@ -21,6 +21,11 @@ public class TestAuton extends CommandBase {
     }
 
     @Override
+    protected void initialize() {
+
+    }
+
+    @Override
     protected void execute() {
         if (!isFinished()) {
             SmartDashboard.putNumber("PID Output", this.driveTrain.getPidOutput());

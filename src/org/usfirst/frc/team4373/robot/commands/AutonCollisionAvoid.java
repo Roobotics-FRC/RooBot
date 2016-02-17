@@ -17,6 +17,11 @@ public class AutonCollisionAvoid extends CommandBase {
     }
 
     @Override
+    protected void initialize() {
+
+    }
+
+    @Override
     protected void execute() {
         if (oi.getDistance() < 250) {
             driveTrain.setBoth(SPEED / 2);

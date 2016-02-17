@@ -1,4 +1,6 @@
-package org.usfirst.frc.team4373.robot.input.filter;
+package org.usfirst.frc.team4373.input.filter;
+
+import org.usfirst.frc.team4373.robot.input.filter.Filter;
 
 /**
  * Created by tesla on 11/1/15.

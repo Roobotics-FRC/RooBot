@@ -1,3 +1,6 @@
+*.class
+dist/
+dist/FRCUserProgram.jar
 .idea/
 # User-specific stuff:
 .idea/workspace.xml
