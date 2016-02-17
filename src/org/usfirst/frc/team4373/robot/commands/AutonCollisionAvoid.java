@@ -13,6 +13,7 @@ public class AutonCollisionAvoid extends CommandBase {
 
     public AutonCollisionAvoid() {
         driveTrain = Robot.driveTrain;
+        requires(Robot.driveTrain);
     }
 
     @Override
