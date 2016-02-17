@@ -12,20 +12,45 @@ public class ShooterCommand extends CommandBase {
 
     private Shooter shooter;
     private RooJoystick joystick;
+    private int shootTicks;
+    private boolean isShooting;
+    private static final int MIN_SHOOT_SPEED = 1;
 
     public ShooterCommand() {
         super();
+        requires(Robot.shooter);
+        requires(Robot.intake);
         joystick = this.oi.getJoystick();
         shooter = Robot.shooter;
-        requires(Robot.driveTrain);
+        isShooting = false;
+        shootTicks = 0;
+    }
+
+    @Override
+    protected void initialize() {
+
+    }
+
+    protected boolean canShoot() {
+        return shooter.getSpeed() >= MIN_SHOOT_SPEED;
     }
 
     @Override
     protected void execute() {
-        if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_FORWARD)) {
-            shooter.shoot();
+        if (isShooting) shootTicks++;
+        if (shootTicks >= 600) {
+            Robot.shooter.stop();
+            shootTicks = 0;
+            isShooting = false;
+        }
+        if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_START)) {
+            shooter.start();
+            isShooting = true;
+        }
+        if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT) && canShoot()) {
+            Robot.intake.turnBackward();
         } else {
-            shooter.stop();
+            Robot.intake.stop();
         }
     }
 

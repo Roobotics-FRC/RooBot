@@ -19,7 +19,7 @@ public class Shooter extends PIDSubsystem {
         this.motor2 = new CANTalon(RobotMap.SHOOTER_2);
     }
 
-    public void shoot() {
+    public void start() {
         setBoth(1);
     }
 
@@ -30,6 +30,10 @@ public class Shooter extends PIDSubsystem {
     private void setBoth(double power) {
         this.motor1.set(power);
         this.motor2.set(-power);
+    }
+
+    public double getSpeed() {
+        return this.motor1.getSpeed();
     }
 
     @Override
