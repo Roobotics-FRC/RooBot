@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4373.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
@@ -40,8 +41,9 @@ public class ShooterCommand extends CommandBase {
     @Override
     protected void execute() {
         setShootSpeed();
-        RooDashboard.getDashboard().putNumber("Shooter Speed", shooter.getSpeed());
+        SmartDashboard.putNumber("Shooter Speed", shooter.getSpeed());
         if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_START)) {
+            SmartDashboard.putNumber("GoodThings", 1);
             shooter.start();
             if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
                 Robot.intake.turnBackward();
@@ -49,6 +51,7 @@ public class ShooterCommand extends CommandBase {
                 Robot.intake.stop();
             }
         } else {
+            SmartDashboard.putNumber("GoodThings", 0);
             shooter.stop();
         }
     }
