@@ -24,19 +24,19 @@ public class Robot extends IterativeRobot {
     public static DriveTrain driveTrain = new DriveTrain(1, 1, 0);
     public static Intake intake = new Intake(0, 1, 1);
     public static Shooter shooter = new Shooter(0, 1, 1);
-    private AutonCollisionAvoid autonCommand = new AutonCollisionAvoid();
+//    private AutonCollisionAvoid autonCommand =null;// new AutonCollisionAvoid();
 
 
     @Override
     public void autonomousInit() {
-        autonCommand.start();
+        /*autonCommand.start();*/
     }
 
     @Override
     public void teleopInit() {
-        if (autonCommand != null) {
+        /*if (autonCommand != null) {
             autonCommand.cancel();
-        }
+        }*/
     }
 
     @Override

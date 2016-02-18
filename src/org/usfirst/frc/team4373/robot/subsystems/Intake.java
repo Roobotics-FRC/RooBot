@@ -20,11 +20,11 @@ public class Intake extends PIDSubsystem {
     }
 
     public void turnForward() {
-        motor.set(INTAKE_POWER);
+        motor.set(-INTAKE_POWER);
     }
 
     public void turnBackward() {
-        motor.set(-INTAKE_POWER);
+        motor.set(INTAKE_POWER);
     }
 
     public void stop() {

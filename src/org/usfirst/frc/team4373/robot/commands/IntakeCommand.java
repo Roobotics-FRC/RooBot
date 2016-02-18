@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4373.robot.commands;
 
+import edu.wpi.first.wpilibj.NamedSendable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
@@ -18,7 +20,6 @@ public class IntakeCommand extends CommandBase {
         this.joystick = oi.getJoystick();
         this.intake = Robot.intake;
         requires(this.intake);
-        requires(Robot.driveTrain);
     }
 
     @Override
@@ -28,7 +29,8 @@ public class IntakeCommand extends CommandBase {
 
     @Override
     protected void execute() {
-        if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_FORWARD)) {
+        
+        if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_FORWARD) || joystick.getRawButton(RobotMap.SHOOTER_BUTTON_START)) {
             intake.turnForward();
         } else if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD)) {
             intake.turnBackward();

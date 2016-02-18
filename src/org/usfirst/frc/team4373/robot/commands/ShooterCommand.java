@@ -21,7 +21,6 @@ public class ShooterCommand extends CommandBase {
         joystick = this.oi.getJoystick();
         shooter = Robot.shooter;
         requires(this.shooter);
-        requires(Robot.intake);
     }
 
     @Override
@@ -43,15 +42,8 @@ public class ShooterCommand extends CommandBase {
         setShootSpeed();
         SmartDashboard.putNumber("Shooter Speed", shooter.getSpeed());
         if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_START)) {
-            SmartDashboard.putNumber("GoodThings", 1);
             shooter.start();
-            if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
-                Robot.intake.turnBackward();
-            } else {
-                Robot.intake.stop();
-            }
         } else {
-            SmartDashboard.putNumber("GoodThings", 0);
             shooter.stop();
         }
     }

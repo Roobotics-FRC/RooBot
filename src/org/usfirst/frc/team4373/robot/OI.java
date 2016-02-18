@@ -31,8 +31,6 @@ public class OI {
     }
 
     public void init() {
-//        shoot = new JoystickButton(joystick, RobotMap.SHOOTER_BUTTON_START);
-//        shoot.whenPressed(new ShooterCommand());
     }
 
     public static OI getOI() {
