@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.commands.IntakeCommand;
-import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 
 /**
  * Created by tesla on 2/8/16.

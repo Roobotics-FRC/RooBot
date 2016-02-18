@@ -4,8 +4,6 @@ package org.usfirst.frc.team4373.robot;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team4373.robot.commands.ShooterCommand;
 import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 import org.usfirst.frc.team4373.robot.input.filter.CubeFilter;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
