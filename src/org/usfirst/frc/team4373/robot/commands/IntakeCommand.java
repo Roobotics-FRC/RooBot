@@ -17,6 +17,7 @@ public class IntakeCommand extends CommandBase {
         super();
         this.joystick = oi.getJoystick();
         this.intake = Robot.intake;
+        requires(this.intake);
         requires(Robot.driveTrain);
     }
 

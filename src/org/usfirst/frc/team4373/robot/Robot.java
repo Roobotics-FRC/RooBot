@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import org.usfirst.frc.team4373.robot.commands.AutonCollisionAvoid;
+import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4373.robot.subsystems.Intake;
 import org.usfirst.frc.team4373.robot.subsystems.Shooter;
@@ -17,12 +18,14 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
         this.talon = new CANTalon(0);
+        OI.getOI().init();
     }
 
     public static DriveTrain driveTrain = new DriveTrain(1, 1, 0);
     public static Intake intake = new Intake(0, 1, 1);
     public static Shooter shooter = new Shooter(0, 1, 1);
     private AutonCollisionAvoid autonCommand = new AutonCollisionAvoid();
+
 
     @Override
     public void autonomousInit() {

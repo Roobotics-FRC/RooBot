@@ -29,7 +29,7 @@ public class Shooter extends PIDSubsystem {
 
     private void setBoth(double power) {
         this.motor1.set(power);
-        this.motor2.set(-power);
+        this.motor2.set(power);
     }
 
     public double getSpeed() {

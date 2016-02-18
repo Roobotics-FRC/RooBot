@@ -2,6 +2,7 @@ package org.usfirst.frc.team4373.robot.commands;
 
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
+import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
 import org.usfirst.frc.team4373.robot.subsystems.Shooter;
 
@@ -12,45 +13,43 @@ public class ShooterCommand extends CommandBase {
 
     private Shooter shooter;
     private RooJoystick joystick;
-    private int shootTicks;
-    private boolean isShooting;
-    private static final int MIN_SHOOT_SPEED = 1;
+    private double minShootSpeed;
 
     public ShooterCommand() {
         super();
-        requires(Robot.shooter);
-        requires(Robot.intake);
         joystick = this.oi.getJoystick();
         shooter = Robot.shooter;
-        isShooting = false;
-        shootTicks = 0;
+        requires(this.shooter);
+        requires(Robot.intake);
     }
 
     @Override
-    protected void initialize() {
-
+    public void initialize() {
+        setShootSpeed();
+        RooDashboard.getDashboard().putNumber("GOOD THINGS ARE HAPPENING", 1);
     }
 
     protected boolean canShoot() {
-        return shooter.getSpeed() >= MIN_SHOOT_SPEED;
+        return shooter.getSpeed() >= minShootSpeed;
+    }
+
+    protected void setShootSpeed() {
+        minShootSpeed = oi.getJoystick().getRawAxis(RobotMap.SHOOTER_SPEED_AXIS);
     }
 
     @Override
     protected void execute() {
-        if (isShooting) shootTicks++;
-        if (shootTicks >= 600) {
-            Robot.shooter.stop();
-            shootTicks = 0;
-            isShooting = false;
-        }
+        setShootSpeed();
+        RooDashboard.getDashboard().putNumber("Shooter Speed", shooter.getSpeed());
         if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_START)) {
             shooter.start();
-            isShooting = true;
-        }
-        if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT) && canShoot()) {
-            Robot.intake.turnBackward();
+            if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
+                Robot.intake.turnBackward();
+            } else {
+                Robot.intake.stop();
+            }
         } else {
-            Robot.intake.stop();
+            shooter.stop();
         }
     }
 

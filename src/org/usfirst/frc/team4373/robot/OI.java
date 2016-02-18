@@ -3,6 +3,9 @@ package org.usfirst.frc.team4373.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team4373.robot.commands.ShooterCommand;
 import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 import org.usfirst.frc.team4373.robot.input.filter.CubeFilter;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
@@ -18,12 +21,18 @@ public class OI {
     private ADXRS450_Gyro gyro;
     private AnalogInput ultrasonic;
     private Accelerometer accelerometer;
+    private Button shoot;
 
     public OI() {
         gyro = new ADXRS450_Gyro();
         joystick = new RooJoystick(RobotMap.JOYSTICK_PORT, new CubeFilter());
         ultrasonic = new AnalogInput(0);
         accelerometer = new Accelerometer();
+    }
+
+    public void init() {
+        shoot = new JoystickButton(joystick, RobotMap.SHOOTER_BUTTON_START);
+        shoot.whenPressed(new ShooterCommand());
     }
 
     public static OI getOI() {

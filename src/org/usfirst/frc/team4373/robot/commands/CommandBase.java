@@ -12,13 +12,10 @@ import java.util.Random;
 public abstract class CommandBase extends Command {
     protected Random random;
     protected OI oi;
-
-
+    
     public CommandBase() {
         super();
         this.oi = OI.getOI();
         random = new Random(System.currentTimeMillis());
     }
-
-
 }
