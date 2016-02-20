@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4373.robot.subsystems;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.OI;
@@ -8,21 +11,28 @@ import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 
+import java.util.Random;
+
 /**
  * Created by tesla on 1/15/16.
  */
 public class DriveTrain extends PIDSubsystem {
     private CANTalon left1, left2, right1, right2;
-    private double pidOutput = 0;
+    private PIDController throttleController1, throttleController2, throttleController3, throttleController4;
 
-    public DriveTrain(double p, double i, double d) {
-        super("DriveTrain", p, i, d);
+    public DriveTrain() {
+        super("DriveTrain", 1, 0, 0);
         getPIDController().setContinuous(false);
         this.left1 = new CANTalon(RobotMap.LEFT_DRIVE_MOTOR_1);
         this.left2 = new CANTalon(RobotMap.LEFT_DRIVE_MOTOR_2);
         this.right1 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_1);
         this.right2 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_2);
-        OI.getOI().resetGyro();
+        throttleController1 = new PIDController(1, 0, 0, this.left1, this.left1);
+        throttleController2 = new PIDController(1, 0, 0, this.left1, this.left1);
+        throttleController3 = new PIDController(1, 0, 0, this.left1, this.left1);
+        throttleController4 = new PIDController(1, 0, 0, this.left1, this.left1);
+        
+
         getPIDController().setContinuous(false);
         getPIDController().setInputRange(-180, 180);
         getPIDController().setOutputRange(-1.0, 1.0);
@@ -66,10 +76,6 @@ public class DriveTrain extends PIDSubsystem {
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new DriveWithJoystick());
-    }
-
-    public double getPidOutput() {
-        return pidOutput;
     }
 
     @Override
