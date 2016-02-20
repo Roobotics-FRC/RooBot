@@ -3,7 +3,6 @@ package org.usfirst.frc.team4373.robot.commands;
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
-import org.usfirst.frc.team4373.robot.subsystems.Intake;
 
 /**
  * Created by tesla on 2/8/16.
@@ -21,7 +20,7 @@ public class IntakeCommand extends CommandBase {
 
     @Override
     protected void initialize() {
-
+        Robot.intake.startCompressor();
     }
 
     @Override
@@ -32,6 +31,13 @@ public class IntakeCommand extends CommandBase {
             Robot.intake.turnBackward();
         } else {
             Robot.intake.stop();
+        }
+        if (joystick.getRawButton(RobotMap.SOLENOID_BUTTON_FORWARD)) {
+            Robot.intake.raise();
+        } else if (joystick.getRawButton(RobotMap.SOLENOID_BUTTON_REVERSE)) {
+            Robot.intake.lower();
+        } else {
+            Robot.intake.stopRaise();
         }
     }
 

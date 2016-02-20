@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4373.robot.subsystems;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.commands.IntakeCommand;
@@ -12,10 +14,17 @@ public class Intake extends PIDSubsystem {
 
     private double INTAKE_POWER = 1;
     private CANTalon motor;
+    private DoubleSolenoid solenoid1;
+    private DoubleSolenoid solenoid2;
+    private Compressor compressor;
 
     public Intake(double p, double i, double d) {
         super("Intake", p, i, d);
         this.motor = new CANTalon(RobotMap.INTAKE_PORT);
+        this.solenoid1 = new DoubleSolenoid(RobotMap.PCM_PORT, 0, 1);
+        this.solenoid2 = new DoubleSolenoid(RobotMap.PCM_PORT, 2, 3);
+        this.compressor = new Compressor(RobotMap.PCM_PORT);
+        this.compressor.setClosedLoopControl(true);
     }
 
     public void turnForward() {
@@ -28,6 +37,25 @@ public class Intake extends PIDSubsystem {
 
     public void stop() {
         motor.set(0);
+    }
+
+    public void startCompressor() {
+        this.compressor.start();
+    }
+
+    public void raise() {
+        this.solenoid1.set(DoubleSolenoid.Value.kForward);
+        this.solenoid2.set(DoubleSolenoid.Value.kForward);
+    }
+
+    public void lower() {
+        this.solenoid1.set(DoubleSolenoid.Value.kReverse);
+        this.solenoid2.set(DoubleSolenoid.Value.kReverse);
+    }
+
+    public void stopRaise() {
+        this.solenoid1.set(DoubleSolenoid.Value.kOff);
+        this.solenoid2.set(DoubleSolenoid.Value.kOff);
     }
 
     @Override
