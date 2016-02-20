@@ -34,10 +34,6 @@ public class Shooter extends PIDSubsystem {
         this.motor2.set(power);
     }
 
-    public double getSpeed() {
-        return this.motor1.getSpeed();
-    }
-
     @Override
     protected double returnPIDInput() {
         return 0;
