@@ -27,10 +27,8 @@ public class DriveTrain extends PIDSubsystem {
         this.right2 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_2);
         this.left2.changeControlMode(CANTalon.TalonControlMode.Follower);
         this.left2.set(this.left1.getDeviceID());
-        this.right1.changeControlMode(CANTalon.TalonControlMode.Follower);
-        this.right1.set(this.left1.getDeviceID());
         this.right2.changeControlMode(CANTalon.TalonControlMode.Follower);
-        this.right2.set(this.left1.getDeviceID());
+        this.right2.set(this.right1.getDeviceID());
         throttleController1 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController2 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController3 = new PIDController(1, 0, 0, this.left1, this.left1);
