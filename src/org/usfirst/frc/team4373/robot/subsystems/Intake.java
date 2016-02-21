@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.RobotMap;
-import org.usfirst.frc.team4373.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4373.robot.commands.teleop.IntakeCommand;
 
 /**
  * Created by tesla on 2/8/16.
