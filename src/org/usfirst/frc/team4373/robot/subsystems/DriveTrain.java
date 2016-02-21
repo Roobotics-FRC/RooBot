@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4373.robot.subsystems;
 
-import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDSource;
-import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.OI;
@@ -17,7 +14,6 @@ import java.util.Random;
  */
 public class DriveTrain extends PIDSubsystem {
     private CANTalon left1, left2, right1, right2;
-    
     private PIDController throttleController1, throttleController2, throttleController3, throttleController4;
 
     private double rampRate;
@@ -29,6 +25,12 @@ public class DriveTrain extends PIDSubsystem {
         this.left2 = new CANTalon(RobotMap.LEFT_DRIVE_MOTOR_2);
         this.right1 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_1);
         this.right2 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_2);
+        this.left2.changeControlMode(CANTalon.TalonControlMode.Follower);
+        this.left2.set(this.left1.getDeviceID());
+        this.right1.changeControlMode(CANTalon.TalonControlMode.Follower);
+        this.right1.set(this.left1.getDeviceID());
+        this.right2.changeControlMode(CANTalon.TalonControlMode.Follower);
+        this.right2.set(this.left1.getDeviceID());
         throttleController1 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController2 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController3 = new PIDController(1, 0, 0, this.left1, this.left1);
@@ -60,9 +62,6 @@ public class DriveTrain extends PIDSubsystem {
     public void setRampRate(double rampRate) {
         this.rampRate = rampRate;
         left1.setVoltageRampRate(rampRate);
-        left2.setVoltageRampRate(rampRate);
-        right1.setVoltageRampRate(rampRate);
-        right2.setVoltageRampRate(rampRate);
     }
 
     public double getRampRate() {
