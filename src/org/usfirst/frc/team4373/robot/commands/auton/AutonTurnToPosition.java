@@ -1,8 +1,9 @@
-package org.usfirst.frc.team4373.robot.commands;
+package org.usfirst.frc.team4373.robot.commands.auton;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.OI;
 import org.usfirst.frc.team4373.robot.Robot;
+import org.usfirst.frc.team4373.robot.commands.CommandBase;
 
 /**
  * Created by tesla on 2/20/16.
