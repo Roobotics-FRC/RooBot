@@ -4,8 +4,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import org.usfirst.frc.team4373.robot.OI;
 import org.usfirst.frc.team4373.robot.RobotMap;
-import org.usfirst.frc.team4373.robot.commands.DriveWithJoystick;
-import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
+import org.usfirst.frc.team4373.robot.commands.teleop.DriveWithJoystick;
 
 /**
  * Created by tesla on 1/15/16.
@@ -13,6 +12,7 @@ import org.usfirst.frc.team4373.robot.dashboard.RooDashboard;
 public class DriveTrain extends PIDSubsystem {
     private CANTalon left1, left2, right1, right2;
     private double pidOutput = 0;
+    private double rampRate;
 
     public DriveTrain(double p, double i, double d) {
         super("DriveTrain", p, i, d);
@@ -40,6 +40,18 @@ public class DriveTrain extends PIDSubsystem {
         power = -power;
         setLeft(power);
         setRight(power);
+    }
+
+    public void setRampRate(double rampRate) {
+        this.rampRate = rampRate;
+        left1.setVoltageRampRate(rampRate);
+        left2.setVoltageRampRate(rampRate);
+        right1.setVoltageRampRate(rampRate);
+        right2.setVoltageRampRate(rampRate);
+    }
+
+    public double getRampRate() {
+        return rampRate;
     }
 
     @Override

@@ -1,6 +1,7 @@
-package org.usfirst.frc.team4373.robot.commands;
+package org.usfirst.frc.team4373.robot.commands.teleop;
 
 import org.usfirst.frc.team4373.robot.Robot;
+import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
 import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
 
