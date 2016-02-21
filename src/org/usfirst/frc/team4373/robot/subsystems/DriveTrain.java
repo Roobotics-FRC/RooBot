@@ -31,7 +31,8 @@ public class DriveTrain extends PIDSubsystem {
         throttleController2 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController3 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController4 = new PIDController(1, 0, 0, this.left1, this.left1);
-        
+
+        this.left1.setFeedbackDevice(CANTalon.FeedbackDevice.EncFalling);
 
         getPIDController().setContinuous(false);
         getPIDController().setInputRange(-180, 180);
