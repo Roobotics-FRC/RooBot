@@ -21,8 +21,8 @@ public class Intake extends PIDSubsystem {
     public Intake(double p, double i, double d) {
         super("Intake", p, i, d);
         this.motor = new CANTalon(RobotMap.INTAKE_PORT);
-        this.solenoid1 = new DoubleSolenoid(RobotMap.PCM_PORT, 0, 2);
-        this.solenoid2 = new DoubleSolenoid(RobotMap.PCM_PORT, 1, 3);
+        this.solenoid1 = new DoubleSolenoid(RobotMap.PCM_PORT, 2, 0);
+        this.solenoid2 = new DoubleSolenoid(RobotMap.PCM_PORT, 3, 1);
         this.compressor = new Compressor(RobotMap.PCM_PORT);
         this.compressor.setClosedLoopControl(true);
     }

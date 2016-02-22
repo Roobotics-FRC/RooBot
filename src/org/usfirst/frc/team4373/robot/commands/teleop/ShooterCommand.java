@@ -24,6 +24,7 @@ public class ShooterCommand extends CommandBase {
 
     @Override
     protected void execute() {
+        
         if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_START)) {
             if (joystick.getRawButton(RobotMap.SHOOTER_BUTTON_REVERSE)) {
                 Robot.shooter.startReverse();
