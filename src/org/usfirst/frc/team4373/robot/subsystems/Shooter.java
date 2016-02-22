@@ -25,6 +25,10 @@ public class Shooter extends PIDSubsystem {
         setBoth(1);
     }
 
+    public void startReverse() {
+        setBoth(-1);
+    }
+
     public void stop() {
         setBoth(0);
     }
