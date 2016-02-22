@@ -17,8 +17,8 @@ public class RobotMap {
     public static final int INTAKE_BUTTON_BACKWARD = 3;
 
     public static final int PCM_PORT = 9;
-    public static final int SOLENOID_BUTTON_FORWARD = 8;
-    public static final int SOLENOID_BUTTON_REVERSE = 12;
+    public static final int SOLENOID_BUTTON_FORWARD = 6;
+    public static final int SOLENOID_BUTTON_REVERSE = 4;
 
     public static final int SHOOTER_1 = 6;
     public static final int SHOOTER_2 = 7;
