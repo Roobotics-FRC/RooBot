@@ -43,19 +43,21 @@ public class Intake extends PIDSubsystem {
         this.compressor.start();
     }
 
+    private void setBoth(DoubleSolenoid.Value value) {
+        this.solenoid1.set(value);
+        this.solenoid2.set(value);
+    }
+
     public void raise() {
-        this.solenoid1.set(DoubleSolenoid.Value.kForward);
-        this.solenoid2.set(DoubleSolenoid.Value.kForward);
+        setBoth(DoubleSolenoid.Value.kForward);
     }
 
     public void lower() {
-        this.solenoid1.set(DoubleSolenoid.Value.kReverse);
-        this.solenoid2.set(DoubleSolenoid.Value.kReverse);
+        setBoth(DoubleSolenoid.Value.kReverse);
     }
 
     public void stopRaise() {
-        this.solenoid1.set(DoubleSolenoid.Value.kOff);
-        this.solenoid2.set(DoubleSolenoid.Value.kOff);
+        setBoth(DoubleSolenoid.Value.kOff);
     }
 
     @Override
