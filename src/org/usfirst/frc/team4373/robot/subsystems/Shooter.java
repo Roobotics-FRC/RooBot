@@ -16,8 +16,10 @@ public class Shooter extends PIDSubsystem {
     public Shooter(double p, double i, double d) {
         super("Shooter", p, i, d);
         this.motor1 = new CANTalon(RobotMap.SHOOTER_1);
-        this.motor2 = new CANTalon(RobotMap.SHOOTER_2);
         this.motor1.enableBrakeMode(true);
+        this.motor2 = new CANTalon(RobotMap.SHOOTER_2);
+        this.motor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+        this.motor2.set(RobotMap.SHOOTER_1);
         this.motor2.enableBrakeMode(true);
     }
 
@@ -35,7 +37,6 @@ public class Shooter extends PIDSubsystem {
 
     private void setBoth(double power) {
         this.motor1.set(power);
-        this.motor2.set(power);
     }
 
     @Override
