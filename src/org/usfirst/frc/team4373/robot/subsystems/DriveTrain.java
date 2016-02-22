@@ -22,13 +22,19 @@ public class DriveTrain extends PIDSubsystem {
         super("DriveTrain", 1, 0, 0);
         getPIDController().setContinuous(false);
         this.left1 = new CANTalon(RobotMap.LEFT_DRIVE_MOTOR_1);
+        this.left1.reverseOutput(false);
         this.left2 = new CANTalon(RobotMap.LEFT_DRIVE_MOTOR_2);
-        this.right1 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_1);
-        this.right2 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_2);
         this.left2.changeControlMode(CANTalon.TalonControlMode.Follower);
-        this.left2.set(this.left1.getDeviceID());
+        this.left2.set(RobotMap.LEFT_DRIVE_MOTOR_1);
+        this.left2.reverseOutput(false);
+        this.right1 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_1);
+        this.right1.reverseOutput(false);
+        this.right2 = new CANTalon(RobotMap.RIGHT_DRIVE_MOTOR_2);
         this.right2.changeControlMode(CANTalon.TalonControlMode.Follower);
-        this.right2.set(this.right1.getDeviceID());
+        this.right2.set(RobotMap.RIGHT_DRIVE_MOTOR_1);
+        this.right2.reverseOutput(false);
+
+//        this.right2.reverseOutput(true);
         throttleController1 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController2 = new PIDController(1, 0, 0, this.left1, this.left1);
         throttleController3 = new PIDController(1, 0, 0, this.left1, this.left1);
@@ -42,17 +48,14 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public void setLeft(double power) {
-        this.left1.set(-power);
-        this.left2.set(-power);
+        this.left1.set(power);
     }
 
     public void setRight(double power) {
-        this.right1.set(power);
-        this.right2.set(power);
+        this.right1.set(-power);
     }
 
     public void setBoth(double power) {
-        power = -power;
         setLeft(power);
         setRight(power);
     }

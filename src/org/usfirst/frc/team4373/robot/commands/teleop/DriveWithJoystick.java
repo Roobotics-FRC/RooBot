@@ -26,8 +26,8 @@ public class DriveWithJoystick extends CommandBase {
 
     @Override
     protected void execute() {
-        double right = (this.joystick.getAxis(3) / 2) + this.joystick.getAxis(1);
-        double left = (-this.joystick.getAxis(3) / 2) + this.joystick.getAxis(1);
+        double right = -this.joystick.getAxis(1) - (this.joystick.getAxis(3) / 2);
+        double left =  -this.joystick.getAxis(1) + (this.joystick.getAxis(3) / 2);
         this.driveTrain.setRight(right);
         this.driveTrain.setLeft(left);
     }
