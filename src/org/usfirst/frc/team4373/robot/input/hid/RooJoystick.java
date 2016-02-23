@@ -8,7 +8,7 @@ import org.usfirst.frc.team4373.robot.input.filter.Filter;
  * Created by tesla on 11/1/15.
  */
 public class RooJoystick extends Joystick {
-    private static final double DEADZONE = 0.07D;
+    private static final double DEADZONE = 0.08D;
     private Filter filter = null;
 
     public RooJoystick(int port, Filter... filter) {
@@ -18,7 +18,11 @@ public class RooJoystick extends Joystick {
 
     public double filter(double val, Filter filter) {
         Object ret = filter == null ? this.filter == null ? val : this.filter.applyFilter(val) : filter.applyFilter(val);
-        return (Double) ret;
+        return applyDeadzone((Double) ret);
+    }
+
+    public double applyDeadzone(double input) {
+        return Math.abs(input) <= DEADZONE ? 0 : input;
     }
 
     protected double rooGetX(Filter filter) {
@@ -26,9 +30,6 @@ public class RooJoystick extends Joystick {
     }
 
     protected double rooGetY(Filter filter) {
-        if (Math.abs(this.getY()) < DEADZONE) {
-            return 0.0D;
-        }
         return this.filter(this.getY(), filter);
     }
 
@@ -37,14 +38,6 @@ public class RooJoystick extends Joystick {
     }
 
     protected double rooGetTwist(Filter filter) {
-        double deadZone = DEADZONE;
-        double twist = this.getTwist();
-        if (twist < 0) {
-            deadZone *= 3;
-        }
-        if (Math.abs(this.getTwist()) <= DEADZONE) {
-            return 0.0D;
-        }
         return this.filter(this.getTwist(), filter);
     }
 

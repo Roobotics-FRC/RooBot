@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4373.robot.commands.teleop;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
@@ -10,12 +11,14 @@ import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
  */
 public class DriveWithJoystick extends CommandBase {
     private DriveTrain driveTrain;
-    private RooJoystick joystick;
+    private RooJoystick driveJoystick;
+    private RooJoystick operatorJoystick;
 
     public DriveWithJoystick() {
         super();
         driveTrain = Robot.driveTrain;
-        joystick = this.oi.getDriveJoystick();
+        driveJoystick = this.oi.getDriveJoystick();
+        operatorJoystick = this.oi.getOperatorJoystick();
         requires(this.driveTrain);
     }
 
@@ -26,8 +29,15 @@ public class DriveWithJoystick extends CommandBase {
 
     @Override
     protected void execute() {
-        double right = -this.joystick.getAxis(1) - (this.joystick.getAxis(3) / 2);
-        double left =  -this.joystick.getAxis(1) + (this.joystick.getAxis(3) / 2);
+        double right = -this.driveJoystick.getAxis(1) - (this.driveJoystick.getAxis(3) / 3);
+        double left =  -this.driveJoystick.getAxis(1) + (this.driveJoystick.getAxis(3) / 3);
+        if (right == 0 && left == 0) {
+            right = this.operatorJoystick.getAxis(1) - (this.operatorJoystick.getAxis(0) / 3);
+            left =  this.operatorJoystick.getAxis(1) + (this.operatorJoystick.getAxis(0) / 3);
+            SmartDashboard.putNumber("Left", left);
+            SmartDashboard.putNumber("Right", right);
+            SmartDashboard.putBoolean("Good", true);
+        }
         this.driveTrain.setRight(right);
         this.driveTrain.setLeft(left);
     }
