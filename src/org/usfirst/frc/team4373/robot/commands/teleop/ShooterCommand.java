@@ -13,7 +13,7 @@ public class ShooterCommand extends CommandBase {
 
     public ShooterCommand() {
         super();
-        joystick = this.oi.getJoystick();
+        joystick = this.oi.getDriveJoystick();
         requires(Robot.shooter);
     }
 

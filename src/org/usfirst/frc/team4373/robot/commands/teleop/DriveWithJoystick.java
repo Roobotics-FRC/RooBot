@@ -15,7 +15,7 @@ public class DriveWithJoystick extends CommandBase {
     public DriveWithJoystick() {
         super();
         driveTrain = Robot.driveTrain;
-        joystick = this.oi.getJoystick();
+        joystick = this.oi.getDriveJoystick();
         requires(this.driveTrain);
     }
 

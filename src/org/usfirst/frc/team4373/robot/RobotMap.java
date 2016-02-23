@@ -9,7 +9,8 @@ public class RobotMap {
     public static final int RIGHT_DRIVE_MOTOR_1 = 3;
     public static final int RIGHT_DRIVE_MOTOR_2 = 1;
 
-    public static final int JOYSTICK_PORT = 0;
+    public static final int DRIVER_JOYSTICK_PORT = 0;
+    public static final int OPERATOR_JOYSTICK_PORT = 1;
 
     public static final int INTAKE_PORT = 5;
 

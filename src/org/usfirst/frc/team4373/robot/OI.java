@@ -15,7 +15,8 @@ import org.usfirst.frc.team4373.robot.input.sensor.Accelerometer;
 public class OI {
     private static OI oi = null;
 
-    private RooJoystick joystick;
+    private RooJoystick driveJoystick;
+    private RooJoystick operatorJoystick;
     private ADXRS450_Gyro gyro;
     private AnalogInput ultrasonic;
     private Accelerometer accelerometer;
@@ -23,7 +24,8 @@ public class OI {
 
     public OI() {
         gyro = new ADXRS450_Gyro();
-        joystick = new RooJoystick(RobotMap.JOYSTICK_PORT, new CubeFilter());
+        driveJoystick = new RooJoystick(RobotMap.DRIVER_JOYSTICK_PORT, new CubeFilter());
+        operatorJoystick = new RooJoystick(RobotMap.OPERATOR_JOYSTICK_PORT, new CubeFilter());
         ultrasonic = new AnalogInput(0);
         accelerometer = new Accelerometer();
     }
@@ -42,8 +44,12 @@ public class OI {
         return accelerometer;
     }
 
-    public RooJoystick getJoystick() {
-        return this.joystick;
+    public RooJoystick getDriveJoystick() {
+        return this.driveJoystick;
+    }
+
+    public RooJoystick getOperatorJoystick() {
+        return operatorJoystick;
     }
 
     public void tick() {
