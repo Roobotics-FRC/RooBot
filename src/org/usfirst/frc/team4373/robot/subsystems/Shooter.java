@@ -39,6 +39,11 @@ public class Shooter extends PIDSubsystem {
         this.motor1.set(power);
     }
 
+    public double getRPM() {
+        return this.motor1.getEncVelocity();
+//        return this.motor1.getSpeed();
+    }
+
     @Override
     protected double returnPIDInput() {
         return 0;
@@ -48,6 +53,7 @@ public class Shooter extends PIDSubsystem {
     protected void usePIDOutput(double output) {
 
     }
+
 
     @Override
     protected void initDefaultCommand() {

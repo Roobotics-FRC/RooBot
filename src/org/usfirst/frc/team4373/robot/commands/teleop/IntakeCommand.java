@@ -10,11 +10,14 @@ import org.usfirst.frc.team4373.robot.input.hid.RooJoystick;
  */
 public class IntakeCommand extends CommandBase {
 
-    private RooJoystick joystick;
+    private RooJoystick driveJoystick;
+    private RooJoystick operatorJoystick;
+
 
     public IntakeCommand() {
         super();
-        this.joystick = oi.getDriveJoystick();
+        this.driveJoystick = oi.getDriveJoystick();
+        this.operatorJoystick = oi.getOperatorJoystick();
         requires(Robot.intake);
 
     }
@@ -26,16 +29,18 @@ public class IntakeCommand extends CommandBase {
 
     @Override
     protected void execute() {
-        if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_FORWARD) || joystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
+        if (driveJoystick.getRawButton(RobotMap.INTAKE_BUTTON_FORWARD) || driveJoystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
             Robot.intake.turnForward();
-        } else if (joystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD)) {
+        } else if (operatorJoystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
+            Robot.intake.turnForward();
+        } else if (driveJoystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD)) {
             Robot.intake.turnBackward();
         } else {
             Robot.intake.stop();
         }
-        if (joystick.getRawButton(RobotMap.SOLENOID_BUTTON_FORWARD)) {
+        if (driveJoystick.getRawButton(RobotMap.SOLENOID_BUTTON_FORWARD)) {
             Robot.intake.raise();
-        } else if (joystick.getRawButton(RobotMap.SOLENOID_BUTTON_REVERSE)) {
+        } else if (driveJoystick.getRawButton(RobotMap.SOLENOID_BUTTON_REVERSE)) {
             Robot.intake.lower();
         } else {
             Robot.intake.stopRaise();
