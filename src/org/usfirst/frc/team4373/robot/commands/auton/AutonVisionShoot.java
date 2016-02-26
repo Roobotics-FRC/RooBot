@@ -46,11 +46,13 @@ public class AutonVisionShoot extends PIDCommand {
 
     @Override
     protected double returnPIDInput() {
+        double displacement;
         if (!horizontalAlign) {
-            return NetworkTable.getTable("rooVision").getNumber("horizontal");
+            displacement  = NetworkTable.getTable("rooVision").getNumber("horizontal");
         } else {
-            return NetworkTable.getTable("rooVision").getNumber("vertical");
+            displacement = NetworkTable.getTable("rooVision").getNumber("vertical");
         }
+        return displacement;
     }
 
     @Override
