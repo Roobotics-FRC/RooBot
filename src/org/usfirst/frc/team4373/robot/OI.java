@@ -53,7 +53,7 @@ public class OI {
     }
 
     public void tick() {
-        RooDashboard.tick();
+        /*RooDashboard.tick();*/
     }
 
     public double getAngle() {

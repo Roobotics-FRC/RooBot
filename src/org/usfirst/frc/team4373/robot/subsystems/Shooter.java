@@ -40,8 +40,7 @@ public class Shooter extends PIDSubsystem {
     }
 
     public double getRPM() {
-        return this.motor1.getEncVelocity();
-//        return this.motor1.getSpeed();
+        return 0;
     }
 
     @Override

@@ -19,21 +19,21 @@ public class Robot extends IterativeRobot {
     }
 
     public static DriveTrain driveTrain = new DriveTrain();
-    public static Intake intake = new Intake(0, 1, 1);
-    public static Shooter shooter = new Shooter(0, 1, 1);
-    private CommandBase autonCommand = null;
+//    public static Intake intake = new Intake(0, 1, 1);
+//    public static Shooter shooter = new Shooter(0, 1, 1);
+//    private CommandBase autonCommand = null;
 
     @Override
     public void autonomousInit() {
-        autonCommand = new AutonTurnToPosition();
-        autonCommand.start();
+//        autonCommand = new AutonTurnToPosition();
+//        autonCommand.start();
     }
 
     @Override
     public void teleopInit() {
-        if (autonCommand != null && autonCommand.isRunning()) {
-            autonCommand.cancel();
-        }
+//        if (autonCommand != null && autonCommand.isRunning()) {
+//            autonCommand.cancel();
+//        }
     }
 
     @Override
