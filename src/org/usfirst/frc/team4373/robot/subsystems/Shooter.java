@@ -16,6 +16,7 @@ public class Shooter extends PIDSubsystem {
     public Shooter(double p, double i, double d) {
         super("Shooter", p, i, d);
         this.motor1 = new CANTalon(RobotMap.SHOOTER_1);
+        this.motor1.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
         this.motor1.enableBrakeMode(true);
         this.motor2 = new CANTalon(RobotMap.SHOOTER_2);
         this.motor2.changeControlMode(CANTalon.TalonControlMode.Follower);
