@@ -30,10 +30,10 @@ public class DriveWithJoystick extends CommandBase {
     @Override
     protected void execute() {
         double right = -this.driveJoystick.getAxis(1) - (this.driveJoystick.getAxis(3) / 3);
-        double left =  -this.driveJoystick.getAxis(1) + (this.driveJoystick.getAxis(3) / 3);
+        double left = -this.driveJoystick.getAxis(1) + (this.driveJoystick.getAxis(3) / 3);
         if (right == 0 && left == 0) {
-            right = this.operatorJoystick.getAxis(1) - (this.operatorJoystick.getAxis(0) / 3);
-            left =  this.operatorJoystick.getAxis(1) + (this.operatorJoystick.getAxis(0) / 3);
+            right = this.operatorJoystick.getAxis(1) - (this.operatorJoystick.getAxis(3) / 3);
+            left = this.operatorJoystick.getAxis(1) + (this.operatorJoystick.getAxis(3) / 3);
             SmartDashboard.putNumber("Left", left);
             SmartDashboard.putNumber("Right", right);
             SmartDashboard.putBoolean("Good", true);

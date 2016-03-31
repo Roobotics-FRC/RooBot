@@ -24,7 +24,7 @@ public class IntakeCommand extends CommandBase {
 
     @Override
     protected void initialize() {
-        Robot.intake.startCompressor();
+
     }
 
     @Override

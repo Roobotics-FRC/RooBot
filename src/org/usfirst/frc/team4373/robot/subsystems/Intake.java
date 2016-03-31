@@ -25,6 +25,7 @@ public class Intake extends PIDSubsystem {
         this.solenoid2 = new DoubleSolenoid(RobotMap.PCM_PORT, 3, 1);
         this.compressor = new Compressor(RobotMap.PCM_PORT);
         this.compressor.setClosedLoopControl(true);
+        startCompressor();
     }
 
     public void turnForward() {
