@@ -10,6 +10,7 @@ import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
  * Created by tesla on 1/29/16.
  */
 public class DriveWithJoystick extends CommandBase {
+    private static double TURN_SPEED_CUT_CONSTANT = 1.5;
     private DriveTrain driveTrain;
     private RooJoystick driveJoystick;
     private RooJoystick operatorJoystick;
@@ -29,11 +30,15 @@ public class DriveWithJoystick extends CommandBase {
 
     @Override
     protected void execute() {
-        double right = -this.driveJoystick.getAxis(1) - (this.driveJoystick.getAxis(3) / 3);
-        double left = -this.driveJoystick.getAxis(1) + (this.driveJoystick.getAxis(3) / 3);
+        double right = -this.driveJoystick.getAxis(1) - (this.driveJoystick.getAxis(3) / TURN_SPEED_CUT_CONSTANT);
+        double left = -this.driveJoystick.getAxis(1) + (this.driveJoystick.getAxis(3) / TURN_SPEED_CUT_CONSTANT);
         if (right == 0 && left == 0) {
-            right = this.operatorJoystick.getAxis(1) - (this.operatorJoystick.getAxis(3) / 3);
-            left = this.operatorJoystick.getAxis(1) + (this.operatorJoystick.getAxis(3) / 3);
+            right = this.operatorJoystick.getAxis(1) - (this.operatorJoystick.getAxis(3) / TURN_SPEED_CUT_CONSTANT);
+            left = this.operatorJoystick.getAxis(1) + (this.operatorJoystick.getAxis(3) / TURN_SPEED_CUT_CONSTANT);
+            if (true) {
+                right = -right;
+                left = -left;
+            }
             SmartDashboard.putNumber("Left", left);
             SmartDashboard.putNumber("Right", right);
             SmartDashboard.putBoolean("Good", true);
