@@ -14,7 +14,7 @@ import org.usfirst.frc.team4373.robot.input.sensor.Accelerometer;
  */
 public class OI {
     private static OI oi = null;
-
+    
     private RooJoystick driveJoystick;
     private RooJoystick operatorJoystick;
     private ADXRS450_Gyro gyro;
