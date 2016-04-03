@@ -2,9 +2,11 @@ package org.usfirst.frc.team4373.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.commands.CommandBase;
-import org.usfirst.frc.team4373.robot.commands.auton.AutonLurchForwards;
+import org.usfirst.frc.team4373.robot.commands.auton.AutonDriveForwards;
+import org.usfirst.frc.team4373.robot.commands.auton.AutonShootGoal;
 import org.usfirst.frc.team4373.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4373.robot.subsystems.Intake;
 import org.usfirst.frc.team4373.robot.subsystems.Shooter;
@@ -14,11 +16,19 @@ import org.usfirst.frc.team4373.robot.subsystems.Shooter;
  */
 public class Robot extends IterativeRobot {
 
+    private SendableChooser autonChooser;
+
     @Override
     public void robotInit() {
         OI.getOI().init();
         SmartDashboard.putBoolean("Disable Auton", true);
         SmartDashboard.putBoolean("Forklift Down", false);
+        autonChooser = new SendableChooser();
+        autonChooser.addDefault("Disabled", "disabled");
+        autonChooser.addObject("DriveStraight", "driveStraight");
+        autonChooser.addObject("ShootGoal", "shootGoal");
+        SmartDashboard.putData("Autonomous Chooser", autonChooser);
+
     }
 
     public static DriveTrain driveTrain = new DriveTrain();
@@ -28,8 +38,21 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousInit() {
-        if (!SmartDashboard.getBoolean("Disable Auton")) {
-            autonCommand = new AutonLurchForwards();
+        if (autonCommand != null) {
+            autonCommand.cancel();
+        }
+        String command = (String) autonChooser.getSelected();
+        switch (command) {
+            case "driveStraight":
+                autonCommand = new AutonDriveForwards();
+                break;
+            case "shootGoal":
+                autonCommand = new AutonShootGoal();
+                break;
+            default:
+                autonCommand = null;
+        }
+        if (autonCommand != null) {
             autonCommand.start();
         }
     }
@@ -55,11 +78,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousPeriodic() {
-        if (!SmartDashboard.getBoolean("Disable Auton")) {
-            if (autonCommand == null) {
-                autonCommand = new AutonLurchForwards();
-                autonCommand.start();
-            }
+        if (autonCommand != null) {
             Scheduler.getInstance().run();
             OI.getOI().tick();
         }
