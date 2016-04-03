@@ -24,6 +24,6 @@ public class RobotMap {
     public static final int SHOOTER_1 = 6;
     public static final int SHOOTER_2 = 7;
     public static final int SHOOTER_BUTTON_REVERSE = 10;
-    public static final int SHOOTER_BUTTON_START = 4;
+    public static final int SHOOTER_BUTTON_START = 2;
     public static final int SHOOTER_BUTTON_SHOOT = 1;
 }
