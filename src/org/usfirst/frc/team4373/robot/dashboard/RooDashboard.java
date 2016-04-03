@@ -2,7 +2,6 @@ package org.usfirst.frc.team4373.robot.dashboard;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4373.robot.OI;
-import org.usfirst.frc.team4373.robot.Robot;
 
 /**
  * Created by tesla on 1/15/16.
@@ -32,6 +31,5 @@ public class RooDashboard extends SmartDashboard {
         putNumber("Velocity Y", OI.getOI().getAccelerometer().getCurrentYVelocity());
         putNumber("Position X", OI.getOI().getAccelerometer().getCurrentXPosition());
         putNumber("Position Y", OI.getOI().getAccelerometer().getCurrentYPosition());
-        putNumber("Speed", Robot.shooter.getRPM());
     }
 }
