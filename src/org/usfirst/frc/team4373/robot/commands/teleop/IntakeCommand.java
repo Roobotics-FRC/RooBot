@@ -33,7 +33,7 @@ public class IntakeCommand extends CommandBase {
             Robot.intake.turnForward();
         } else if (operatorJoystick.getRawButton(RobotMap.SHOOTER_BUTTON_SHOOT)) {
             Robot.intake.turnForward();
-        } else if (driveJoystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD)) {
+        } else if (driveJoystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD) || operatorJoystick.getRawButton(RobotMap.INTAKE_BUTTON_BACKWARD)) {
             Robot.intake.turnBackward();
         } else {
             Robot.intake.stop();
